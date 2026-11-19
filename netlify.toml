@@ -1,0 +1,21 @@
+# Configuracion de Netlify para el bot blindado.
+[build]
+  # Solo se publica la interfaz. Con publish = "." (bot base) cualquier archivo de la
+  # carpeta, incluidos chat.js y las pruebas, podria quedar descargable como estatico.
+  publish = "public"
+  functions = "netlify/functions"     # aqui vive chat.js
+
+[functions]
+  node_bundler = "esbuild"
+
+# Cabeceras de seguridad de la pagina. La CSP solo permite scripts y estilos
+# servidos por el propio sitio (app.js, formato.js, estilos.css): ningun script
+# en linea ni de terceros, y las llamadas solo van a la propia funcion.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

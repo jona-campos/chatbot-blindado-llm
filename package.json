@@ -1,0 +1,8 @@
+{
+  "name": "chatbot-blindado-llm",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chatbot de atención al cliente blindado en 4 capas contra prompt injection (OWASP LLM Top 10)",
+  "scripts": { "test": "node --test test/*.test.js" },
+  "license": "MIT"
+}

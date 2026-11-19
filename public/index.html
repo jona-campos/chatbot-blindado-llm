@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>TicoPay — Asistente virtual</title>
+<link rel="stylesheet" href="estilos.css">
+<script src="formato.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="marco">
+  <header class="encabezado">
+    <!-- Escudo de marca: decorativo, oculto al lector de pantalla. -->
+    <span class="escudo" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2.5 4.5 5.5v5.2c0 4.7 3.1 8.1 7.5 9.8 4.4-1.7 7.5-5.1 7.5-9.8V5.5L12 2.5Z"
+              fill="#F5A623" stroke="#FFFFFF" stroke-width="1.1" stroke-linejoin="round"/>
+        <path d="m8.6 12 2.3 2.3 4.5-4.6" stroke="#0B1B3A" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <span class="titulos">
+      <h1><span class="marca-t">Tico</span>Pay</h1>
+      <span class="estado-linea">
+        <span class="punto-vivo" aria-hidden="true"></span>
+        En línea
+        <span aria-hidden="true">·</span>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="5" y="10.5" width="14" height="9" rx="1.6" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        conexión cifrada
+      </span>
+    </span>
+  </header>
+
+  <main class="principal">
+    <!-- role="log": los lectores de pantalla anuncian cada mensaje nuevo.
+         tabindex="0": el historial se puede desplazar con el teclado. -->
+    <section id="chat" class="chat" role="log" aria-live="polite" aria-label="Conversación con el asistente" tabindex="0">
+      <div class="msg bot">
+        <span class="oculto">Asistente: </span><p>¡Hola! Soy el asistente virtual de TicoPay. ¿En qué le puedo ayudar hoy?</p>
+      </div>
+      <div id="sugerencias" class="sugerencias">
+        <p class="etiqueta" id="sug-etiqueta">Puede empezar con:</p>
+        <button type="button" class="chip">¿Cómo activo mi tarjeta?</button>
+        <button type="button" class="chip">¿Cuál es el horario de atención?</button>
+        <button type="button" class="chip">Quiero reportar un movimiento</button>
+      </div>
+    </section>
+    <p id="estado" class="estado" role="status" aria-live="polite"></p>
+
+    <form id="formulario" class="formulario" novalidate>
+      <label for="mensaje" class="oculto">Escriba su consulta</label>
+      <input id="mensaje" name="mensaje" type="text" placeholder="Escriba su consulta…"
+             autocomplete="off" maxlength="2000" aria-describedby="contador">
+      <button id="enviar" type="submit">Enviar</button>
+      <p id="contador" class="contador" aria-live="polite"></p>
+    </form>
+  </main>
+  <noscript><p class="aviso">Este asistente necesita JavaScript activado.</p></noscript>
+</div>
+</body>
+</html>
